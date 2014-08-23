@@ -1,0 +1,20 @@
+This little tools helps to download a movie from the ARTE.TV mediathek.
+
+currently the tool is restricted by
+- downloads the german language movie
+- tries to download only the HD version of the movie, if there isn't any it crashes
+
+
+use it like this:
+
+./arteDownloader.py -h
+usage: arteDownloader.py [-h] [-v] ARTE_URL
+
+positional arguments:
+  ARTE_URL       ARTE URL
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -v, --verbose  increase output verbosity
+
+  
