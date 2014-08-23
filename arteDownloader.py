@@ -31,10 +31,9 @@ class ArteHTMLParser(HTMLParser):
 	      self.tvguide_json = attr[1]
 	   
 class ArteDownload:
-   def __init__(self, url, verbose, tags):
+   def __init__(self, url, verbose):
       self.url = url
       self.verbose = verbose
-      self.tags = tags
       self.download_progress = 0
       self.current_time = time.time()
       self.titleList = []
@@ -96,6 +95,7 @@ class ArteDownload:
 	      self.download_progress = 0
 	    else:
 	      print "File Exists"
+      sys.stdout.write("\n")
    
    def report(self, block_no, block_size, file_size):
       self.download_progress += block_size
@@ -128,11 +128,8 @@ if __name__ == "__main__":
    parser = argparse.ArgumentParser()
    parser.add_argument("-v", "--verbose", help="increase output verbosity",
       action="store_true")
-   parser.add_argument("-t", "--id3tags", help="add id3 tags",
-      action="store_true")
    parser.add_argument("ARTE_URL", help="ARTE URL")
    args = parser.parse_args()
    verbose = bool(args.verbose)
-   tags = bool(args.id3tags)
-   download = ArteDownload(args.ARTE_URL, verbose, tags)
+   download = ArteDownload(args.ARTE_URL, verbose)
    download.downloadSongs()
